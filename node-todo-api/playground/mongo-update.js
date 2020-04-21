@@ -6,10 +6,10 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", (err, client) => {
   }
   console.log("Connected to MongoDB server.");
   const db = client.db("TodoApp");
-  db.collection("Todos")
+  db.collection("Users")
     .findOneAndUpdate(
-      { _id: new ObjectID("5e9e41a487ccc659cfcb7b0d") },
-      { $set: { completed: true } },
+      { _id: new ObjectID("5e9e687587ccc659cfcb8022") },
+      { $set: { name: "Ora Martindale" }, $inc: { age: 1 } },
       { returnOriginal: false }
     )
     .then(console.log);
