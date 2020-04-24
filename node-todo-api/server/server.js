@@ -2,8 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const { mongoose } = require("./db/mongoose");
-const { Todo } = require("./model/todo");
-const { User } = require("./model/user");
+const { Todo } = require("./models/todo");
+const { User } = require("./models/user");
 
 const app = express();
 
@@ -27,3 +27,5 @@ app.post("/todos", (req, res) => {
 app.listen(3000, () => {
   console.log("Express server listening on port 3000");
 });
+
+module.exports = { app };
