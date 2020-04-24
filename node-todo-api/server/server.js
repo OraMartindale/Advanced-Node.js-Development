@@ -35,6 +35,26 @@ app.get("/todos", (req, res) => {
   );
 });
 
+app.get("/todos/:id", (req, res) => {
+  let id = req.params.id;
+
+  if (!mongoose.isValidObjectId(id)) {
+    console.log(`${id} is not a valid id.`);
+    res.status(404).send();
+  }
+  Todo.findById(id).then(
+    todo => {
+      if (!todo) {
+        res.status(404).send();
+      }
+      res.send({ todo });
+    },
+    err => {
+      res.status(400).send(err);
+    }
+  );
+});
+
 app.listen(3000, () => {
   console.log("Express server listening on port 3000");
 });
