@@ -1,3 +1,4 @@
+require("./config/config");
 const _ = require("lodash");
 
 const express = require("express");
@@ -104,7 +105,7 @@ app.put("/todos/:id", (req, res) => {
   );
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Express server listening on port 3000");
 });
 
